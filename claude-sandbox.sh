@@ -1,5 +1,16 @@
+# Detect path whether sourced or executed in Bash
+if [ -n "${BASH_SOURCE[0]}" ]; then
+    SCRIPT_PATH="${BASH_SOURCE[0]}"
+else
+    SCRIPT_PATH="$0"
+fi
+
+# Resolve to an absolute directory path
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+
 claude-sandbox() {
-    local compose_file="$HOME/Others/programs/claude-sandbox/docker-compose.yml"
+    # Override if needed
+    local compose_file="$SCRIPT_DIR/docker-compose.yml"
 
     local env_claude_dir=""
     local env_settings=""
