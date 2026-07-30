@@ -1,0 +1,5 @@
+services:
+  claude-sandbox:
+    build: .
+    volumes:
+      - ~/.claude/projects/:/root/.claude/projects/
